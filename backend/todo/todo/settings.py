@@ -129,7 +129,9 @@ STATIC_URL = "/static/"
 SHELL_PLUS = "ipython"
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny",]
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ]
 }
 
 CORS_ORIGIN_WHITELIST = (
