@@ -1,6 +1,6 @@
 from typing import Any, Sequence
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 import factory
 import factory.fuzzy
@@ -30,7 +30,7 @@ class UserFactory(factory.DjangoModelFactory):
         self.set_password(password)
 
     class Meta:
-        model = User
+        model = get_user_model()
         django_get_or_create = ["username"]
 
 
