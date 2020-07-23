@@ -1,14 +1,14 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import generics
 
 from .models import Task
 from .serializers import TaskSerializer
 
 
-class TaskListView(ListAPIView):
+class TaskListView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
-class TaskDetailView(RetrieveAPIView):
+class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer

@@ -9,5 +9,9 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "title",
+            "slug",
             "body",
+            "author",
+            "created",
+            "modified",
         )
