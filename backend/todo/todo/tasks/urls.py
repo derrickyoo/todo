@@ -1,12 +1,13 @@
 from django.urls import path
 
-from .views import TaskListView, TaskDetailView, UserListView, UserDetailView
+from rest_framework.routers import SimpleRouter
+
+from .views import TaskListView, UserListView
 
 
 app_name = "tasks"
-urlpatterns = [
-    path("users/", UserListView.as_view(), name="user_list"),
-    path("users/<int:pk>/", UserDetailView.as_view(), name="user_detail"),
-    path("<int:pk>/", TaskDetailView.as_view(), name="task_detail"),
-    path("", TaskListView.as_view(), name="task_list"),
-]
+router = SimpleRouter()
+router.register("users", UserListView, basename="users")
+router.register("", UserListView, basename="tasks")
+
+urlpatterns = router.urls
